@@ -43,63 +43,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        // Add a marker in Sydney and move the camera
-        LatLng etecia = new LatLng(-23.702723, -46.6898242);
+        // Add a marker in etecia and move the camera
+        LatLng etecia = new LatLng(-23.702497, -46.689288);
         //-23.702723,-46.6898242
-
-        //Evento de click no mapa - cria um marcador a cada click
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                //Salvando a latitude e longitude
-                Double latitute, longitude;
-
-                latitute = latLng.latitude;
-                longitude = latLng.longitude;
-
-                Toast.makeText(MapsActivity.this,
-                        "Click curto - Lat: " + latitute + "Lon: " + longitude,
-                        Toast.LENGTH_SHORT).show();
-
-                //Gerando marcador
-                mMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title("Novo local")
-                        .snippet("Descrição do local")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.onibus_escolar))
-                );
-                //Posicionamento da câmera
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
-            }
-        });
-
-        //Evento de click longo
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                //Salvando a latitude e longitude
-                Double latitute, longitude;
-
-                latitute = latLng.latitude;
-                longitude = latLng.longitude;
-
-                Toast.makeText(MapsActivity.this,
-                        "Click Longo - Lat: " + latitute + "Lon: " + longitude,
-                        Toast.LENGTH_SHORT).show();
-
-                //Gerando marcador
-                mMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title("Novo local")
-                        .snippet("Descrição do local")
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.estudante))
-                );
-                //Posicionamento da câmera
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
-            }
-        });
 
         //Marcadores
         mMap.addMarker(new MarkerOptions()
@@ -115,5 +61,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         );
         //Posicionamento da câmera
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(etecia, 15));
+
+        //Evento de click no mapa - cria um marcador a cada click
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                //Salvando a latitude e longitude
+               double latitude, longitude;
+
+               latitude = latLng.latitude;
+               longitude = latLng.longitude;
+
+                Toast.makeText(MapsActivity.this,
+                        "Click curto - Lat: " + latitude + "Lon: " + longitude,
+                        Toast.LENGTH_SHORT).show();
+
+                //Gerando marcador
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title("Clique curto!!!")
+                        .snippet("Descrição do local")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.onibus_escolar))
+                );
+                //Posicionamento da câmera
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+            }
+        });
+
+        //Evento de click longo
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                //Salvando a latitude e longitude
+                double latitute, longitude;
+
+                latitute = latLng.latitude;
+                longitude = latLng.longitude;
+
+                Toast.makeText(MapsActivity.this,
+                        "Click Longo - Lat: " + latitute + "Lon: " + longitude,
+                        Toast.LENGTH_SHORT).show();
+
+                //Gerando marcador
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title("Clique longo!!!")
+                        .snippet("Descrição do local")
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.estudante))
+                );
+                //Posicionamento da câmera
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+            }
+        });
+
+
     }
 }
